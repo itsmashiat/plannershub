@@ -1,0 +1,7 @@
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    background-color: #bcd4d4;
+    padding: 10px;
+}
