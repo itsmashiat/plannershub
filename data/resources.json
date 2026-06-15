@@ -1,0 +1,163 @@
+{
+  "program": {
+    "name": "Bachelor of Urban and Regional Planning",
+    "department": "Department of Urban and Regional Planning",
+    "university": "Pabna University of Science and Technology",
+    "session": "2024-2025",
+    "totalCredits": 161.5,
+    "contactEmail": "itsmashiat@gmail.com"
+  },
+  "gradingScale": [
+    { "letter": "A+", "point": 4.0 },
+    { "letter": "A", "point": 3.75 },
+    { "letter": "A-", "point": 3.5 },
+    { "letter": "B+", "point": 3.25 },
+    { "letter": "B", "point": 3.0 },
+    { "letter": "B-", "point": 2.75 },
+    { "letter": "C+", "point": 2.5 },
+    { "letter": "C", "point": 2.25 },
+    { "letter": "D", "point": 2.0 },
+    { "letter": "F", "point": 0.0 }
+  ],
+  "semesters":  [
+  {
+    "id": 1,
+    "label": "1st Year 1st Semester",
+    "courses": [
+      { "code": "URP 1101", "title": "Introduction to Urban and Regional Planning", "credits": 3.0 },
+      { "code": "URP 1103", "title": "History of Human Settlements Development", "credits": 3.0 },
+      { "code": "HUM 1151", "title": "Principles of Economics", "credits": 3.0 },
+      { "code": "MATH 1153", "title": "Mathematics-I", "credits": 3.0 },
+      { "code": "HUM 1155", "title": "Functional English", "credits": 3.0 },
+      { "code": "URP 1104", "title": "Principles of Cartography - Lab", "credits": 1.5 },
+      { "code": "ARCH 1106", "title": "Basic Design - Lab", "credits": 1.5 },
+      { "code": "URP 1108", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 2,
+    "label": "1st Year 2nd Semester",
+    "courses": [
+      { "code": "URP 1201", "title": "Urban Planning Theories and Principles", "credits": 3.0 },
+      { "code": "URP 1203", "title": "Principles of Engineering Survey", "credits": 3.0 },
+      { "code": "URP 1204", "title": "Engineering Survey - Lab", "credits": 1.5 },
+      { "code": "ARCH 1205", "title": "Elements of Architecture", "credits": 2.0 },
+      { "code": "MATH 1251", "title": "Mathematics-II", "credits": 3.0 },
+      { "code": "CHE 1253", "title": "Environmental Chemistry", "credits": 3.0 },
+      { "code": "HUM 1255", "title": "Bangladesh Studies and Sociology", "credits": 3.0 },
+      { "code": "URP 1206", "title": "Computer Applications-Lab", "credits": 1.5 },
+      { "code": "URP 1208", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 3,
+    "label": "2nd Year 1st Semester",
+    "courses": [
+      { "code": "URP 2101", "title": "Land Use Planning", "credits": 3.0 },
+      { "code": "URP 2103", "title": "Neighbourhood Planning and Landscape Design", "credits": 3.0 },
+      { "code": "URP 2104", "title": "Site and Area Planning - Lab and Field Work", "credits": 1.5 },
+      { "code": "URP 2105", "title": "Statistics for Planners-I", "credits": 3.0 },
+      { "code": "CE 2151", "title": "Construction Technology and Materials", "credits": 3.0 },
+      { "code": "PHY 2153", "title": "Fundamentals of Physics", "credits": 3.0 },
+      { "code": "URP 2106", "title": "Social and Physical Surveys - Lab", "credits": 1.5 },
+      { "code": "URP 2108", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 4,
+    "label": "2nd Year 2nd Semester",
+    "courses": [
+      { "code": "URP 2201", "title": "Urban Planning Techniques", "credits": 3.0 },
+      { "code": "URP 2202", "title": "Urban Planning Techniques Lab and Field Work", "credits": 2.0 },
+      { "code": "URP 2203", "title": "Statistics for Planners-II", "credits": 3.0 },
+      { "code": "ARCH 2204", "title": "Landscape Planning and Design- Lab", "credits": 1.5 },
+      { "code": "URP 2205", "title": "Research Methodology", "credits": 3.0 },
+      { "code": "CE 2251", "title": "Elements of Civil Engineering Structures", "credits": 3.0 },
+      { "code": "URP 2206", "title": "Computer Applications in Planning-Lab", "credits": 2.0 },
+      { "code": "CSE 2253", "title": "Programming Techniques for Planners", "credits": 3.0 },
+      { "code": "URP 2208", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 5,
+    "label": "3rd Year 1st Semester",
+    "courses": [
+      { "code": "URP 3101", "title": "Rural Development Planning-I", "credits": 3.0 },
+      { "code": "URP 3102", "title": "Rural Development Planning Lab and Field Work", "credits": 1.5 },
+      { "code": "URP 3103", "title": "Housing and Real Estate Development", "credits": 3.0 },
+      { "code": "URP 3105", "title": "Geographic Information System (GIS)-I", "credits": 3.0 },
+      { "code": "URP 3106", "title": "Geographic Information System (GIS) Lab-I", "credits": 3.0 },
+      { "code": "URP 3107", "title": "Transportation Planning - I", "credits": 3.0 },
+      { "code": "URP 3109", "title": "Water Resources Planning", "credits": 3.0 },
+      { "code": "CSE 3152", "title": "Programming Techniques for Planners - Lab", "credits": 1.5 },
+      { "code": "URP 3110", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 6,
+    "label": "3rd Year 2nd Semester",
+    "courses": [
+      { "code": "URP 3201", "title": "Regional Development Planning", "credits": 3.0 },
+      { "code": "URP 3202", "title": "Regional Development Planning - Lab and Field Work", "credits": 1.5 },
+      { "code": "URP 3203", "title": "Remote Sensing and Photogrammetry", "credits": 3.0 },
+      { "code": "URP 3204", "title": "Remote Sensing and Photogrammetry - Lab", "credits": 3.0 },
+      { "code": "URP 3206", "title": "Geographic Information System (GIS) Lab-II", "credits": 3.0 },
+      { "code": "URP 3207", "title": "Transportation Planning - II", "credits": 3.0 },
+      { "code": "URP 3208", "title": "Transportation Planning- Lab and Field Work", "credits": 1.5 },
+      { "code": "URP 3209", "title": "Land Development and Management", "credits": 3.0 },
+      { "code": "URP 3210", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 7,
+    "label": "4th Year 1st Semester",
+    "courses": [
+      { "code": "URP 4000", "title": "Project/Thesis- I", "credits": 2.0 },
+      { "code": "URP 4101", "title": "Legal Basis of Planning", "credits": 3.0 },
+      { "code": "URP 4103", "title": "Project Planning and Management", "credits": 3.0 },
+      { "code": "URP 4104", "title": "Project Planning and Management-Lab", "credits": 2.0 },
+      { "code": "URP 4105", "title": "Climate Change and Disaster Management", "credits": 3.0 },
+      { "code": "URP 4106", "title": "Climate Change and Disaster Management - Lab and Field Work", "credits": 1.5 },
+      { "code": "URP 4107", "title": "Utility Services and Infrastructure Planning", "credits": 3.0 },
+      { "code": "URP 4109", "title": "Resettlement Planning (Elective)", "credits": 2.0 },
+      { "code": "URP 4111", "title": "Rural Development Planning-II (Elective)", "credits": 2.0 },
+      { "code": "URP 4113", "title": "Coastal Zone Planning and Management (Elective)", "credits": 2.0 },
+      { "code": "URP 4115", "title": "Tourism Planning (Elective)", "credits": 2.0 },
+      { "code": "URP 4118", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  },
+
+  {
+    "id": 8,
+    "label": "4th Year 2nd Semester",
+    "courses": [
+      { "code": "URP 4002", "title": "Project/Thesis- II", "credits": 4.0 },
+      { "code": "URP 4201", "title": "Urban Governance and Finance", "credits": 3.0 },
+      { "code": "URP 4203", "title": "Development Planning (Optional)", "credits": 3.0 },
+      { "code": "URP 4205", "title": "Environmental Planning and Management (Optional)", "credits": 3.0 },
+      { "code": "URP 4206", "title": "Environmental Planning and Management- Lab and Field Work", "credits": 3.0 },
+      { "code": "URP 4208", "title": "Participatory Planning – Field Work", "credits": 1.5 },
+      { "code": "URP 4210", "title": "Viva-voce", "credits": 0.75 }
+    ]
+  }
+],
+  "resources": [
+    { "type": "book", "title": "CN Shankar Rao - Principles of Sociology", "course": "HUM 1255", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/12_9DsO9jJnvzs3NM-yllvfRJFnh3cRmT/view?usp=drive_link" },
+    { "type": "book", "title": "Planning Theory Reader", "course": "URP 2101", "semester": 3, "format": "PDF", "level": "Core", "link": "#" },
+    { "type": "book", "title": "GIS Fundamentals for Urban Planners", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Core", "link": "#" },
+    { "type": "note", "title": "Vulnerability Assessment Notes", "course": "URP 4105", "semester": 7, "format": "Slides", "level": "Exam Focus", "link": "#" },
+    { "type": "note", "title": "GIS Data Structures Lecture", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Lab Ready", "link": "#" },
+    { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
+    { "type": "question", "title": "First Year 1st Semester Previous Questions", "course": "Mixed", "semester": 1, "format": "PDF", "level": "Archive", "link": "#" },
+    { "type": "question", "title": "GIS and Remote Sensing Short Questions", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Practice", "link": "#" },
+    { "type": "video", "title": "Crash Course: Urban Land Use Planning", "course": "URP 1101", "semester": 1, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=urban+land+use+planning" },
+    { "type": "video", "title": "GIS Data Models and Spatial Analysis", "course": "URP 3105", "semester": 5, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=GIS+data+structures+spatial+analysis" },
+    { "type": "video", "title": "Climate Risk and Vulnerability Assessment", "course": "URP 4105", "semester": 7, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=climate+risk+vulnerability+assessment+urban+planning" }
+  ]
+}

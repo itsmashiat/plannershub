@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="view-cgpa" class="view-container">
+      <div class="section-header">
+        <span class="section-tag">Performance Tracker</span>
+        <h2 class="section-title">Smart CGPA Calculator</h2>
+      </div>
+
+      <!-- Calculator Mode Selector -->
+      <div class="yt-courses-tab-bar" id="cgpa-mode-tabs" style="justify-content: center; margin-bottom: 2rem;">
+        <button class="course-tab-btn active" id="mode-single-btn" data-mode="single">
+          <i class="fa-solid fa-graduation-cap"></i> Individual Semester GPA
+        </button>
+        <button class="course-tab-btn" id="mode-cumulative-btn" data-mode="cumulative">
+          <i class="fa-solid fa-layer-group"></i> Cumulative CGPA (All Semesters)
+        </button>
+      </div>
+
+      <div class="cgpa-container">
+        <!-- Form Area -->
+        <div class="calculator-card">
+          <!-- Single Semester selector (hidden when cumulative mode is active) -->
+          <div id="single-semester-selector-container" style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <label for="single-semester-select" style="font-family: var(--font-title); font-weight: 600; font-size: 0.95rem; color: var(--accent-cyan);">Select Semester:</label>
+            <select class="filter-select" id="single-semester-select" style="width: auto; min-width: 250px;">
+              <!-- Options populated dynamically from SEMESTERS -->
+            </select>
+          </div>
+
+          <div class="calc-section-header">
+            <h3 id="calc-worksheet-title">Semester Worksheet</h3>
+            <button class="portal-btn" id="add-semester-btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; display: none;">
+              <i class="fa-solid fa-plus"></i> Add Semester
+            </button>
+          </div>
+
+          <div class="semesters-accordion" id="semesters-container">
+            <!-- Semester blocks populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Sticky Results Summary Dashboard -->
+        <div class="results-card">
+          <h3 id="results-card-title">Semester Standing</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Academic performance summary</p>
+          
+          <div class="gauge-outer" id="cgpa-gauge">
+            <div class="gauge-inner">
+              <span class="gauge-value" id="cgpa-value">0.00</span>
+              <span class="gauge-max">out of 4.00</span>
+            </div>
+          </div>
+
+          <div class="results-stats">
+            <div class="result-stat-row">
+              <span class="result-stat-label">Total Credits Earned</span>
+              <span class="result-stat-value" id="total-credits-value">0.0</span>
+            </div>
+            <div class="result-stat-row">
+              <span class="result-stat-label">Equivalent Grade</span>
+              <span class="result-stat-value" id="standing-class-value">N/A</span>
+            </div>
+            <div class="result-stat-row" id="completed-semesters-row" style="display: none;">
+              <span class="result-stat-label">Completed Semesters</span>
+              <span class="result-stat-value" id="completed-semesters-count">0</span>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="btn-export-results">
+            <i class="fa-solid fa-download"></i> Export Academic Summary
+          </button>
+        </div>
+      </div>
+    </section>
+</body>
+</html>
