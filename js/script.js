@@ -211,7 +211,7 @@ function semesterTemplate(semester) {
       ${semester.courses.map((course) => `
         <div class="course-row" data-credit="${course.credits}">
           <strong>${course.code}<br><span>${course.title}</span></strong>
-          <span>${course.credits} cr</span>
+          <span>${course.credits} credits</span>
           <select aria-label="${course.code} grade">
             ${state.data.gradingScale.map((grade) => `<option value="${grade.point}" ${grade.letter === "A+" ? "selected" : ""}>${grade.letter}</option>`).join("")}
           </select>

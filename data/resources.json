@@ -147,6 +147,11 @@
     ]
   }
 ],
+
+
+
+
+
   "resources": [
     { "type": "book", "title": "CN Shankar Rao - Principles of Sociology", "course": "HUM 1255", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/12_9DsO9jJnvzs3NM-yllvfRJFnh3cRmT/view?usp=drive_link" },
     { "type": "book", "title": "Planning Theory Reader", "course": "URP 2101", "semester": 3, "format": "PDF", "level": "Core", "link": "#" },
@@ -154,10 +159,22 @@
     { "type": "note", "title": "Vulnerability Assessment Notes", "course": "URP 4105", "semester": 7, "format": "Slides", "level": "Exam Focus", "link": "#" },
     { "type": "note", "title": "GIS Data Structures Lecture", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Lab Ready", "link": "#" },
     { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
+
+
+
     { "type": "question", "title": "First Year 1st Semester Previous Questions", "course": "Mixed", "semester": 1, "format": "PDF", "level": "Archive", "link": "#" },
     { "type": "question", "title": "GIS and Remote Sensing Short Questions", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Practice", "link": "#" },
+    { "type": "question", "title": "Climate Change and Disaster Management Questions", "course": "URP 4105", "semester": 7, "format": "PDF", "level": "Exam Focus", "link": "#" },
+    
+    
     { "type": "video", "title": "Crash Course: Urban Land Use Planning", "course": "URP 1101", "semester": 1, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=urban+land+use+planning" },
     { "type": "video", "title": "GIS Data Models and Spatial Analysis", "course": "URP 3105", "semester": 5, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=GIS+data+structures+spatial+analysis" },
+    
+
+
+
+
+
     { "type": "video", "title": "Climate Risk and Vulnerability Assessment", "course": "URP 4105", "semester": 7, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=climate+risk+vulnerability+assessment+urban+planning" }
   ]
 }
