@@ -272,12 +272,13 @@ select.btn.primary {
   box-shadow: 0 0 28px rgba(138, 21, 215, 0.32);
   
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 800;
   padding: 10px 35px 10px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
+  font-family: inherit;
 
 }
 
