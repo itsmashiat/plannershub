@@ -183,26 +183,58 @@ function resourceCard(item) {
   `;
 }
 
+
+// CGPA Calculator Logic /////////////////////////
+
+
+
 function initCgpa() {
   const container = document.querySelector("[data-semester-container]");
-  const addButton = document.querySelector("[data-add-semester]");
+  const semesterSelect = document.querySelector("[data-select-semester]");
   const resetButton = document.querySelector("[data-reset-cgpa]");
-  if (!container || !addButton) return;
+  if (!container || !semesterSelect) return;
 
-  addButton.addEventListener("click", () => {
-    const semester = state.data.semesters[state.loadedSemesters % state.data.semesters.length];
-    state.loadedSemesters += 1;
+  semesterSelect.addEventListener("change", (event) => {
+    const selectedIndex = Number(event.target.value); 
+    container.innerHTML = "";
+    
+    if (selectedIndex === 0) {
+      state.loadedSemesters = 0;
+      if (typeof calculateCgpa === "function") calculateCgpa();
+      return;
+    }
+
+    if (!state?.data?.semesters) {
+      console.error("Semester data is missing from state!");
+      return;
+    }
+
+    const arrayIndex = (selectedIndex - 1) % state.data.semesters.length;
+    const semester = state.data.semesters[arrayIndex];
+    
+    state.loadedSemesters = selectedIndex;
     container.insertAdjacentHTML("beforeend", semesterTemplate(semester));
-    container.querySelectorAll("select").forEach((select) => select.addEventListener("change", calculateCgpa));
-    calculateCgpa();
+    container.querySelectorAll("select").forEach((select) => 
+      select.addEventListener("change", calculateCgpa)
+    );
+    
+    if (typeof calculateCgpa === "function") calculateCgpa();
   });
 
   resetButton?.addEventListener("click", () => {
     container.innerHTML = "";
     state.loadedSemesters = 0;
-    calculateCgpa();
+    semesterSelect.value = "0";
+    if (typeof calculateCgpa === "function") calculateCgpa();
   });
 }
+
+  resetButton?.addEventListener("click", () => {
+    container.innerHTML = "";
+    state.loadedSemesters = 0;
+    semesterSelect.value = "0";
+    calculateCgpa();
+  });
 
 function semesterTemplate(semester) {
   return `
@@ -248,12 +280,20 @@ function calculateCgpa() {
 }
 
 function getStanding(cgpa) {
-  if (cgpa >= 3.8) return "First Class with Distinction";
-  if (cgpa >= 3) return "First Class";
-  if (cgpa >= 2.25) return "Second Class";
-  if (cgpa >= 2) return "Minimum passing standing";
-  return "Below passing standing";
+  if (cgpa >= 4.00) return "উফফ!!! ভাই সেইইই ভাই সেইইই! আপনার মাথায় তো ব্রেইন না, পুরা 'SuperComputer' ফিট করা! মাথা নষ্ট!";
+  if (cgpa >= 3.75) return "👑 আরে ভাই ভাই ভাই! 'Bro thinks he is the main character!'... কিন্তু কথা সত্য, আপনিই মেইন ক্যারেক্টার!";
+  if (cgpa >= 3.50) return "আরে ভাই ভাই ভাই! আপনার ভাবসাব দেখে মনে হচ্ছে আপনি একাই পুরো ডিপার্টমেন্ট চালান!";
+  if (cgpa >= 3.25) return "রেজাল্ট দেখে মনে হচ্ছে আপনি সিজিপিএ না, সিজিপিএ-র ডিসকাউন্ট রেট দেখাচ্ছেন!";
+  if (cgpa >= 3.00) return "রেজাল্ট দেখে পুরা 'আমি কি তাদের মতো?' ভাইব আসতেছে! টপারদের জাস্ট একটু পিছন থেকে ছুঁয়ে দিলেন আরকি!";
+  if (cgpa >= 2.75) return "তুমি পড়াশোনা করতে চাও, কিন্তু পড়ো না। কী, রাগ করলা?";
+  if (cgpa >= 2.50) return "বাল ফালাইছেন! এইটা সিজিপিএ নাকি সেন্টার ফ্রুট এর দাম?!";
+  if (cgpa >= 2.25) return "সারা সেমিস্টার শুধু রিলস দেখছেন! পড়ালেখা হয় নাই।";
+  if (cgpa >= 2.00) return "মারা খাওয়া' থেকে বাঁচে গেছেন!";
+  return "ফেল করছস ভাই! -10,000 Aura Points 💀";
 }
+
+
+
 
 function initTools() {
   const toast = document.querySelector("[data-toast]");
@@ -271,5 +311,5 @@ function sumCredits(courses) {
 }
 
 function formatNumber(value) {
-  return Number.isInteger(value) ? String(value) : value.toFixed(1);
+  return Number.isInteger(value) ? String(value) : value.toFixed(2);
 }
