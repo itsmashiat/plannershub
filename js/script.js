@@ -179,6 +179,24 @@ function initResources() {
 
 
 function resourceCard(item) {
+  if (item.type === "video" || item.format === "YouTube") {
+    const embedHtml = item.linkEmbd 
+      ? `<iframe src="${item.linkEmbd}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; margin-bottom: 12px;"></iframe>`
+      : "";
+    return `
+      <article class="resource-card">
+        ${embedHtml}
+        <h3>${item.title}</h3>
+        <p>${item.course}</p>
+        <div class="meta">
+          <span class="chip">${item.type}</span>
+          <span class="chip">${item.level}</span>
+        </div>
+        <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
+      </article>
+    `;
+  }
+
   return `
     <article class="resource-card">
       <h3>${item.title}</h3>
