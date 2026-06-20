@@ -129,6 +129,9 @@ function pageForType(type) {
   return map[type] || "pages/tools.html";
 }
 
+//FIXME:dsfgdfgsdfgsddgsdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
 function initResources() {
   const list = document.querySelector("[data-resource-list]");
   if (!list) return;
@@ -142,20 +145,21 @@ function initResources() {
       .join("");
   }
 
+// FIXME: I NEED TO RENDER THE VIDEO INSTADE OF CARD FOR DOCUMENT AND NEED TO ADD BUTTON VISIT NOT OPEN RESOURCES
+
   const render = () => {
     const query = (input?.value || "").toLowerCase();
     const semester = semesterFilter?.value || "all";
     let items = state.data.resources.filter((resource) => {
-      const typeMatch = type === "gis"
-        ? [resource.title, resource.course].join(" ").toLowerCase().includes("gis") || resource.course === "URP 3105"
-        : resource.type === type;
+      const typeMatch = type === "video"
+        ? [resource.title, resource.course].join(" ").toLowerCase().includes("video") : resource.type === type;
       const queryMatch = [resource.title, resource.course, resource.level, resource.format].join(" ").toLowerCase().includes(query);
       const semesterMatch = semester === "all" || String(resource.semester) === semester;
       return typeMatch && queryMatch && semesterMatch;
     });
 
-    if (type === "gis") {
-      items = items.concat(state.data.resources.filter((resource) => resource.type === "video" && resource.course === "URP 3105"));
+    if (type === "video") {
+      items = items.concat(state.data.resources.filter((resource) => resource.type === "video"));
     }
 
     list.innerHTML = items.length
@@ -168,11 +172,45 @@ function initResources() {
   render();
 }
 
+function videoCard(item) {
+  return `
+    <article class="resource-card">
+      <div class="cards-3">
+                        <iframe  src="${item.linkEmbd}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class="card-3-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.course}</p>
+                            <p>Semester ${item.semester}</p>
+                            <div class="green-text">
+                                <i class="fa-solid fa-clock" style="color: #00FF88;"></i> 42 min
+                            </div>
+                        </div>
+                        <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
+                    </div>
+    </article>
+  `;
+}
+  
+
+
+//FIXME:
+ 
+
+
+
+
+
+
+
+
+// FIXME:fdgdfg
+
 function resourceCard(item) {
   return `
     <article class="resource-card">
       <h3>${item.title}</h3>
-      <p>${item.course} resource for semester ${item.semester}.</p>
+      <p>${item.course} </p>
+      <p> resource for semester ${item.semester}.</p>
       <div class="meta">
         <span class="chip">${item.type}</span>
         <span class="chip">${item.format}</span>

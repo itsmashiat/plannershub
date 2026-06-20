@@ -154,11 +154,20 @@
 
   "resources": [
     { "type": "book", "title": "CN Shankar Rao - Principles of Sociology", "course": "HUM 1255", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/12_9DsO9jJnvzs3NM-yllvfRJFnh3cRmT/view?usp=drive_link" },
-    { "type": "book", "title": "Planning Theory Reader", "course": "URP 2101", "semester": 3, "format": "PDF", "level": "Core", "link": "#" },
-    { "type": "book", "title": "GIS Fundamentals for Urban Planners", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Core", "link": "#" },
+    { "type": "book", "title": "Differential Calculus (Das and Mukharjee)", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1_kGyEfFOeLx251tFg7zS2GL23-18CtCa/view?usp=drive_link" },
+    { "type": "book", "title": "Integral Calculus 54th Edition Chapter 1-12", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1pa_qjdmm6q-0yfA5whgCeawjJ33w1DY7/view?usp=drive_link" },
+    { "type": "book", "title": "A Textbook of Surveying by Aziz and Shahjahan", "course": "URP 1203", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1SUzvxWSeNF2_wGkhEnsm5cIlx_bDZ9X1/view?usp=sharing" },
     { "type": "note", "title": "Vulnerability Assessment Notes", "course": "URP 4105", "semester": 7, "format": "Slides", "level": "Exam Focus", "link": "#" },
     { "type": "note", "title": "GIS Data Structures Lecture", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Lab Ready", "link": "#" },
     { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
+    { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
+
+
+
+
+
+
+
 
 
 
@@ -167,8 +176,19 @@
     { "type": "question", "title": "Climate Change and Disaster Management Questions", "course": "URP 4105", "semester": 7, "format": "PDF", "level": "Exam Focus", "link": "#" },
     
     
+
+
+
+
+
+
+
+
+
+
+
     { "type": "video", "title": "Crash Course: Urban Land Use Planning", "course": "URP 1101", "semester": 1, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=urban+land+use+planning" },
-    { "type": "video", "title": "GIS Data Models and Spatial Analysis", "course": "URP 3105", "semester": 5, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/results?search_query=GIS+data+structures+spatial+analysis" },
+    { "type": "video", "title": "QGIS Full Course for Beginners", "course": "URP 3105", "semester": 5, "format": "YouTube", "level": "Recommended", "link": "https://www.youtube.com/watch?v=SovdBaus7pM&t=842s" , "linkEmbd" : "https://www.youtube.com/embed/SovdBaus7pM" },
     
 
 
