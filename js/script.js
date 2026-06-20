@@ -7,19 +7,25 @@ const FALLBACK_DATA = {
     { letter: "F", point: 0 }
   ],
   semesters: [
-    { id: 1, label: "1st Year 1st Semester", courses: [
-      { code: "URP 1101", title: "Urban Land Use Planning", credits: 3 },
-      { code: "HUM 1151", title: "English and Communication", credits: 3 },
-      { code: "MATH 1153", title: "Mathematics for Planners", credits: 3 },
-      { code: "URP 1108", title: "Viva-Voce", credits: 1.5 }
-    ] },
-    { id: 5, label: "3rd Year 1st Semester", courses: [
-      { code: "URP 3105", title: "Geographic Information System", credits: 3 },
-      { code: "URP 3106", title: "GIS Sessional", credits: 2 }
-    ] },
-    { id: 7, label: "4th Year 1st Semester", courses: [
-      { code: "URP 4105", title: "Climate Change and Disaster Management", credits: 3 }
-    ] }
+    {
+      id: 1, label: "1st Year 1st Semester", courses: [
+        { code: "URP 1101", title: "Urban Land Use Planning", credits: 3 },
+        { code: "HUM 1151", title: "English and Communication", credits: 3 },
+        { code: "MATH 1153", title: "Mathematics for Planners", credits: 3 },
+        { code: "URP 1108", title: "Viva-Voce", credits: 1.5 }
+      ]
+    },
+    {
+      id: 5, label: "3rd Year 1st Semester", courses: [
+        { code: "URP 3105", title: "Geographic Information System", credits: 3 },
+        { code: "URP 3106", title: "GIS Sessional", credits: 2 }
+      ]
+    },
+    {
+      id: 7, label: "4th Year 1st Semester", courses: [
+        { code: "URP 4105", title: "Climate Change and Disaster Management", credits: 3 }
+      ]
+    }
   ],
   resources: [
     { type: "book", title: "Urban Land Use Planning by Kaiser", course: "URP 1101", semester: 1, format: "PDF", level: "Core", link: "#" },
@@ -145,7 +151,7 @@ function initResources() {
       .join("");
   }
 
-// FIXME: I NEED TO RENDER THE VIDEO INSTADE OF CARD FOR DOCUMENT AND NEED TO ADD BUTTON VISIT NOT OPEN RESOURCES
+  // FIXME: I NEED TO RENDER THE VIDEO INSTADE OF CARD FOR DOCUMENT AND NEED TO ADD BUTTON VISIT NOT OPEN RESOURCES
 
   const render = () => {
     const query = (input?.value || "").toLowerCase();
@@ -190,11 +196,11 @@ function videoCard(item) {
     </article>
   `;
 }
-  
+
 
 
 //FIXME:
- 
+
 
 
 
@@ -233,9 +239,9 @@ function initCgpa() {
   if (!container || !semesterSelect) return;
 
   semesterSelect.addEventListener("change", (event) => {
-    const selectedIndex = Number(event.target.value); 
+    const selectedIndex = Number(event.target.value);
     container.innerHTML = "";
-    
+
     if (selectedIndex === 0) {
       state.loadedSemesters = 0;
       if (typeof calculateCgpa === "function") calculateCgpa();
@@ -249,13 +255,13 @@ function initCgpa() {
 
     const arrayIndex = (selectedIndex - 1) % state.data.semesters.length;
     const semester = state.data.semesters[arrayIndex];
-    
+
     state.loadedSemesters = selectedIndex;
     container.insertAdjacentHTML("beforeend", semesterTemplate(semester));
-    container.querySelectorAll("select").forEach((select) => 
+    container.querySelectorAll("select").forEach((select) =>
       select.addEventListener("change", calculateCgpa)
     );
-    
+
     if (typeof calculateCgpa === "function") calculateCgpa();
   });
 
@@ -267,12 +273,12 @@ function initCgpa() {
   });
 }
 
-  resetButton?.addEventListener("click", () => {
-    container.innerHTML = "";
-    state.loadedSemesters = 0;
-    semesterSelect.value = "0";
-    calculateCgpa();
-  });
+resetButton?.addEventListener("click", () => {
+  container.innerHTML = "";
+  state.loadedSemesters = 0;
+  semesterSelect.value = "0";
+  calculateCgpa();
+});
 
 function semesterTemplate(semester) {
   return `
@@ -321,8 +327,8 @@ function getStanding(cgpa) {
   if (cgpa >= 4.00) return "উফফ!!! ভাই সেইইই ভাই সেইইই! আপনার মাথায় তো ব্রেইন না, পুরা 'SuperComputer' ফিট করা! মাথা নষ্ট!";
   if (cgpa >= 3.75) return "👑 আরে ভাই ভাই ভাই! 'Bro thinks he is the main character!'... কিন্তু কথা সত্য, আপনিই মেইন ক্যারেক্টার!";
   if (cgpa >= 3.50) return "আরে ভাই ভাই ভাই! আপনার ভাবসাব দেখে মনে হচ্ছে আপনি একাই পুরো ডিপার্টমেন্ট চালান!";
-  if (cgpa >= 3.25) return "রেজাল্ট দেখে মনে হচ্ছে আপনি সিজিপিএ না, সিজিপিএ-র ডিসকাউন্ট রেট দেখাচ্ছেন!";
-  if (cgpa >= 3.00) return "রেজাল্ট দেখে পুরা 'আমি কি তাদের মতো?' ভাইব আসতেছে! টপারদের জাস্ট একটু পিছন থেকে ছুঁয়ে দিলেন আরকি!";
+  if (cgpa >= 3.25) return "রেজাল্ট দেখে পুরা 'আমি কি তাদের মতো?' ভাইব আসতেছে! টপারদের জাস্ট একটু পিছন থেকে ছুঁয়ে দিলেন আরকি!";
+  if (cgpa >= 3.00) return "রেজাল্ট দেখে মনে হচ্ছে আপনি সিজিপিএ না, সিজিপিএ-র ডিসকাউন্ট রেট দেখাচ্ছেন!";
   if (cgpa >= 2.75) return "তুমি পড়াশোনা করতে চাও, কিন্তু পড়ো না। কী, রাগ করলা?";
   if (cgpa >= 2.50) return "বাল ফালাইছেন! এইটা সিজিপিএ নাকি সেন্টার ফ্রুট এর দাম?!";
   if (cgpa >= 2.25) return "সারা সেমিস্টার শুধু রিলস দেখছেন! পড়ালেখা হয় নাই।";
