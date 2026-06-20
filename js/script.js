@@ -151,7 +151,6 @@ function initResources() {
       .join("");
   }
 
-  // FIXME: I NEED TO RENDER THE VIDEO INSTADE OF CARD FOR DOCUMENT AND NEED TO ADD BUTTON VISIT NOT OPEN RESOURCES
 
   const render = () => {
     const query = (input?.value || "").toLowerCase();
@@ -178,38 +177,6 @@ function initResources() {
   render();
 }
 
-function videoCard(item) {
-  return `
-    <article class="resource-card">
-      <div class="cards-3">
-                        <iframe  src="${item.linkEmbd}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <div class="card-3-info">
-                            <h3>${item.title}</h3>
-                            <p>${item.course}</p>
-                            <p>Semester ${item.semester}</p>
-                            <div class="green-text">
-                                <i class="fa-solid fa-clock" style="color: #00FF88;"></i> 42 min
-                            </div>
-                        </div>
-                        <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
-                    </div>
-    </article>
-  `;
-}
-
-
-
-//FIXME:
-
-
-
-
-
-
-
-
-
-// FIXME:fdgdfg
 
 function resourceCard(item) {
   return `
@@ -226,6 +193,110 @@ function resourceCard(item) {
     </article>
   `;
 }
+
+
+
+
+
+
+
+
+
+
+
+//FIXME: yt video resource cardssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+
+
+
+
+
+
+
+
+
+// function initResources() {
+//   // const list = document.querySelector("[data-resource-list]");
+//   // if (!list) return;
+//   // const type = list.dataset.type;
+//   // const input = document.querySelector("[data-filter-input]");
+//   // const semesterFilter = document.querySelector("[data-semester-filter]");
+
+//   // if (semesterFilter) {
+//   //   semesterFilter.innerHTML += state.data.semesters
+//   //     .map((semester) => `<option value="${semester.id}">${semester.label}</option>`)
+//   //     .join("");
+//   // }
+
+//   const render = () => {
+//     const query = (input?.value || "").toLowerCase();
+//     const semester = semesterFilter?.value || "all";
+//     let items = state.data.resources.filter((resource) => {
+//       const typeMatch = type === "video"
+//         ? [resource.title, resource.course].join(" ").toLowerCase().includes("video") : resource.type === type;
+//       const queryMatch = [resource.title, resource.course, resource.level, resource.format].join(" ").toLowerCase().includes(query);
+//       const semesterMatch = semester === "all" || String(resource.semester) === semester;
+//       return typeMatch && queryMatch && semesterMatch;
+//     });
+
+//     if (type === "video") {
+//       items = items.concat(state.data.resources.filter((resource) => resource.type === "video"));
+//     }
+
+//     list.innerHTML = items.length
+//       ? items.map(videoCard).join("")
+//       : `<article class="video-card"><h3>No resources found</h3><p>Add matching items to data/resources.json.</p></article>`;
+//   };
+
+//   input?.addEventListener("input", render);
+//   semesterFilter?.addEventListener("change", render);
+//   render();
+// }
+
+// function videoCard(item) {
+//   return `
+//     <article class="video-card">
+//       <div class="cards-3">
+//                         <iframe  src="${item.linkEmbd}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+//                         <div class="card-3-info">
+//                             <h3>${item.title}</h3>
+//                             <p>${item.course}</p>
+//                             <p>Semester ${item.semester}</p>
+//                             <div class="green-text">
+//                                 <i class="fa-solid fa-clock" style="color: #00FF88;"></i> 42 min
+//                             </div>
+//                         </div>
+//                         <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
+//                     </div>
+//     </article>
+//   `;
+// }
+
+
+// function resourceCard(item) {
+//   return `
+//     <article class="resource-card">
+//       <h3>${item.title}</h3>
+//       <p>${item.course} </p>
+//       <p> resource for semester ${item.semester}.</p>
+//       <div class="meta">
+//         <span class="chip">${item.type}</span>
+//         <span class="chip">${item.format}</span>
+//         <span class="chip">${item.level}</span>
+//       </div>
+//       <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
+//     </article>
+//   `;
+// }
+
+
+//FIXME: YT resources end hare
+
+
+
+
+
+
 
 
 // CGPA Calculator Logic /////////////////////////

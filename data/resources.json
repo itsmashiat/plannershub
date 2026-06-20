@@ -157,8 +157,11 @@
     { "type": "book", "title": "Differential Calculus (Das and Mukharjee)", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1_kGyEfFOeLx251tFg7zS2GL23-18CtCa/view?usp=drive_link" },
     { "type": "book", "title": "Integral Calculus 54th Edition Chapter 1-12", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1pa_qjdmm6q-0yfA5whgCeawjJ33w1DY7/view?usp=drive_link" },
     { "type": "book", "title": "A Textbook of Surveying by Aziz and Shahjahan", "course": "URP 1203", "semester": 2, "format": "PDF", "level": "Core", "link": "https://drive.google.com/file/d/1SUzvxWSeNF2_wGkhEnsm5cIlx_bDZ9X1/view?usp=sharing" },
-    { "type": "note", "title": "Vulnerability Assessment Notes", "course": "URP 4105", "semester": 7, "format": "Slides", "level": "Exam Focus", "link": "#" },
-    { "type": "note", "title": "GIS Data Structures Lecture", "course": "URP 3105", "semester": 5, "format": "PDF", "level": "Lab Ready", "link": "#" },
+    
+
+
+    { "type": "note", "title": "Mathematics-II Rafique sir Note ", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Exam Focus", "link": "https://drive.google.com/file/d/1NCXI-u-0I7NFzgbO9Vqzvwla4rq7Gkja/view?usp=sharing" },
+    { "type": "note", "title": "Integral Calculus Note (Tanzil bhai)", "course": "MATH 1251", "semester": 2, "format": "PDF", "level": "Recommended", "link": "https://drive.google.com/file/d/1xzP4ypVwuppn8QJ_pcGcmnWZV4-DNkld/view?usp=sharing" },
     { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
     { "type": "note", "title": "Transportation Survey Checklist", "course": "URP 2201", "semester": 4, "format": "DOCX", "level": "Fieldwork", "link": "#" },
 
