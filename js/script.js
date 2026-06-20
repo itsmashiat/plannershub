@@ -216,17 +216,17 @@ function resourceCard(item) {
 
 
 // function initResources() {
-//   // const list = document.querySelector("[data-resource-list]");
-//   // if (!list) return;
-//   // const type = list.dataset.type;
-//   // const input = document.querySelector("[data-filter-input]");
-//   // const semesterFilter = document.querySelector("[data-semester-filter]");
+//   const list = document.querySelector("[data-resource-list]");
+//   if (!list) return;
+//   const type = list.dataset.type;
+//   const input = document.querySelector("[data-filter-input]");
+//   const semesterFilter = document.querySelector("[data-semester-filter]");
 
-//   // if (semesterFilter) {
-//   //   semesterFilter.innerHTML += state.data.semesters
-//   //     .map((semester) => `<option value="${semester.id}">${semester.label}</option>`)
-//   //     .join("");
-//   // }
+//   if (semesterFilter) {
+//     semesterFilter.innerHTML += state.data.semesters
+//       .map((semester) => `<option value="${semester.id}">${semester.label}</option>`)
+//       .join("");
+//   }
 
 //   const render = () => {
 //     const query = (input?.value || "").toLowerCase();
@@ -272,22 +272,6 @@ function resourceCard(item) {
 //   `;
 // }
 
-
-// function resourceCard(item) {
-//   return `
-//     <article class="resource-card">
-//       <h3>${item.title}</h3>
-//       <p>${item.course} </p>
-//       <p> resource for semester ${item.semester}.</p>
-//       <div class="meta">
-//         <span class="chip">${item.type}</span>
-//         <span class="chip">${item.format}</span>
-//         <span class="chip">${item.level}</span>
-//       </div>
-//       <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
-//     </article>
-//   `;
-// }
 
 
 //FIXME: YT resources end hare
@@ -357,7 +341,7 @@ function semesterTemplate(semester) {
       <h3><span>${semester.label}</span><span>${sumCredits(semester.courses)} credits</span></h3>
       ${semester.courses.map((course) => `
         <div class="course-row" data-credit="${course.credits}">
-          <strong>${course.code}<br><span>${course.title}</span></strong>
+          <strong>${course.title}<br><span>${course.code}</span></strong>
           <span>${course.credits} credits</span>
           <select aria-label="${course.code} grade">
             ${state.data.gradingScale.map((grade) => `<option value="${grade.point}" ${grade.letter === "A+" ? "selected" : ""}>${grade.letter}</option>`).join("")}
