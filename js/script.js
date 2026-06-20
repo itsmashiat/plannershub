@@ -156,16 +156,11 @@ function initResources() {
     const query = (input?.value || "").toLowerCase();
     const semester = semesterFilter?.value || "all";
     let items = state.data.resources.filter((resource) => {
-      const typeMatch = type === "video"
-        ? [resource.title, resource.course].join(" ").toLowerCase().includes("video") : resource.type === type;
+      const typeMatch = resource.type === type;
       const queryMatch = [resource.title, resource.course, resource.level, resource.format].join(" ").toLowerCase().includes(query);
       const semesterMatch = semester === "all" || String(resource.semester) === semester;
       return typeMatch && queryMatch && semesterMatch;
     });
-
-    if (type === "video") {
-      items = items.concat(state.data.resources.filter((resource) => resource.type === "video"));
-    }
 
     list.innerHTML = items.length
       ? items.map(resourceCard).join("")
