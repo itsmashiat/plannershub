@@ -331,7 +331,6 @@ select.btn.primary {
   background: linear-gradient(135deg, var(--green-bright), #b18fcf);
   box-shadow: 0 0 28px rgba(138, 21, 215, 0.32);
   
-  margin-bottom: 10px;
   font-weight: 800;
   padding: 10px 35px 10px 20px;
   border: none;
