@@ -207,7 +207,7 @@ function resourceCard(item) {
         <span class="chip">${item.level}</span>
       </div>
       <div id="linkdiv">
-         <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
+        <a class="open-resources" href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
         <a class="download" href="${transformedDownloadLink}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Download</a>
       </div>
     </article>

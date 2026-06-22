@@ -591,11 +591,24 @@ select.btn.primary option:disabled {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.resource-card .open-resources{
+  background-color: #7125eb;
+  padding: 5px 10px 5px 10px;
+  border-radius: 22px ;
+  
 }
 
 .resource-card .download {
-  color: #C084FC;
+  text-align: center;
+  color: #deccf8;
   border: 1px solid black;
+  background-color: #470275;
+  padding: 5px 10px 5px 10px;
+  border-radius: 22px;
+  font-weight: 800;
 
 }
 
@@ -715,10 +728,6 @@ select.btn.primary option:disabled {
     grid-template-columns: 1fr;
   }
   .result-panel { position: static; }
-
-  .resource-card .download {
-  /* visibility: hidden; */
-  }
 }
 
 @media (max-width: 620px) {
