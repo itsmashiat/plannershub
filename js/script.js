@@ -192,6 +192,10 @@ function resourceCard(item) {
     `;
   }
 
+  const transformedDownloadLink = item.link.includes("file/d/") 
+    ? `https://drive.google.com/uc?export=download&id=${item.link.split("file/d/")[1].split("/view")[0]}`
+    : item.link;
+    
   return `
     <article class="resource-card">
       <h3>${item.title}</h3>
@@ -202,7 +206,10 @@ function resourceCard(item) {
         <span class="chip">${item.format}</span>
         <span class="chip">${item.level}</span>
       </div>
-      <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
+      <div id="linkdiv">
+         <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open resource</a>
+        <a class="download" href="${transformedDownloadLink}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Download</a>
+      </div>
     </article>
   `;
 }
