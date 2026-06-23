@@ -171,12 +171,12 @@ function checkAccessControl() {
         const authPath = isInnerPage ? "auth.html" : "pages/auth.html";
         const homePath = isInnerPage ? "../index.html" : "index.html";
         list.innerHTML = `
-          <div class="lock-panel">
-            <div class="lock-icon">🔒</div>
-            <h2>Restricted Academic Portal</h2>
-            <p>Access to curriculum libraries, lecture notes, question banks, and recommended videos is locked for unregistered users.</p>
-            <p class="lock-subtext">Please login with your approved credentials or submit a registration request to the administrator.</p>
-            <div class="lock-actions">
+          <div class="lock-panel" style="text-align: center; padding: 60px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); backdrop-filter: blur(10px); max-width: 600px; margin: 40px auto; box-shadow: var(--shadow);">
+            <div class="lock-icon" style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--green-bright);">Restricted Academic Portal</h2>
+            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">Access to curriculum libraries, lecture notes, question banks, and recommended videos is locked for unregistered users.</p>
+            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 30px;">Please login with your approved credentials or submit a registration request to the administrator.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
               <a href="${authPath}" class="btn primary">Login / Register</a>
               <a href="${homePath}" class="btn ghost">Back to Home</a>
             </div>
@@ -330,7 +330,9 @@ function resourceCard(item) {
           <span class="chip">${item.type}</span>
           <span class="chip">${item.level}</span>
         </div>
-        <a href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
+        <div id="linkdiv">
+          <a class="open-resources" href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""}>Open in YouTube</a>
+        </div>
       </article>
     `;
   }
