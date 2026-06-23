@@ -761,6 +761,31 @@ select.btn.primary option:disabled {
   animation: floatIn 0.5s ease-out;
 }
 
+.lock-panel h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--green-bright);
+}
+
+.lock-panel p {
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.lock-panel .lock-subtext {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.lock-panel .lock-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .lock-icon {
   font-size: 4rem;
   margin-bottom: 20px;
@@ -807,7 +832,25 @@ select.btn.primary option:disabled {
     font-size: 0.85rem !important;
   }
   .lock-panel {
-    padding: 40px 16px !important;
+    padding: 24px 16px !important;
+    margin: 16px auto !important;
+  }
+  .lock-icon {
+    font-size: 2.5rem !important;
+    margin-bottom: 12px !important;
+  }
+  .lock-panel h2 {
+    font-size: 1.35rem !important;
+    margin-bottom: 8px !important;
+  }
+  .lock-panel p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+  }
+  .lock-panel .lock-subtext {
+    font-size: 0.78rem !important;
+    margin-bottom: 18px !important;
   }
 }
 

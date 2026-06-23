@@ -72,8 +72,12 @@
           <div style="margin-bottom: 24px;">
             <label for="login-password"
               style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Password</label>
-            <input type="password" id="login-password" required placeholder="••••••••"
-              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease;">
+            <div style="position: relative;">
+              <input type="password" id="login-password" required placeholder="••••••••"
+                style="width: 100%; min-height: 46px; padding: 0 45px 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease; box-sizing: border-box;">
+              <button type="button" onclick="togglePasswordVisibility('login-password', this)"
+                style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; outline: none; user-select: none;">👁️</button>
+            </div>
           </div>
           <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Login Account</button>
         </form>
@@ -105,8 +109,12 @@
             <label for="reg-pass"
               style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Choose
               Password</label>
-            <input type="password" id="reg-pass" required placeholder="••••••••"
-              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <div style="position: relative;">
+              <input type="password" id="reg-pass" required placeholder="••••••••"
+                style="width: 100%; min-height: 46px; padding: 0 45px 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; box-sizing: border-box;">
+              <button type="button" onclick="togglePasswordVisibility('reg-pass', this)"
+                style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; outline: none; user-select: none;">👁️</button>
+            </div>
           </div>
           <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Submit Registration
             Request</button>
@@ -135,8 +143,12 @@
             <label for="forgot-pass"
               style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Proposed
               New Password</label>
-            <input type="password" id="forgot-pass" required placeholder="••••••••"
-              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <div style="position: relative;">
+              <input type="password" id="forgot-pass" required placeholder="••••••••"
+                style="width: 100%; min-height: 46px; padding: 0 45px 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; box-sizing: border-box;">
+              <button type="button" onclick="togglePasswordVisibility('forgot-pass', this)"
+                style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; outline: none; user-select: none;">👁️</button>
+            </div>
           </div>
           <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Request Password
             Reset</button>
@@ -152,6 +164,21 @@
 
   <script src="../js/script.js"></script>
   <script>
+    // Password visibility toggle logic
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "🙈";
+        btn.setAttribute("aria-label", "Hide password");
+      } else {
+        input.type = "password";
+        btn.textContent = "👁️";
+        btn.setAttribute("aria-label", "Show password");
+      }
+    }
+
     // Tab Switching Logic
     function switchTab(tab) {
       document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
