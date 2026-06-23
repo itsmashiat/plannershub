@@ -62,7 +62,7 @@
     .admin-table tr:hover {
       background: rgba(255,255,255,0.02);
     }
-    .admin-form input, .admin-form select {
+    .admin-form input {
       width: 100%;
       min-height: 44px;
       padding: 0 12px;
@@ -72,6 +72,35 @@
       color: var(--text);
       outline: none;
       margin-bottom: 16px;
+      transition: all 150ms ease;
+    }
+    .admin-form select {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 40px 0 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fcf4ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      color: var(--text);
+      outline: none;
+      margin-bottom: 16px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+    .admin-form select option {
+      background-color: #120924;
+      color: #ffffff;
+      padding: 12px;
+    }
+    .admin-form select:focus, .admin-form input:focus {
+      border-color: var(--green) !important;
+      background-color: rgba(255,255,255,0.08) !important;
     }
     .admin-form label {
       display: block;
@@ -97,6 +126,20 @@
       color: #60a5fa;
       border: 1px solid var(--blue);
     }
+    .cell-val {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
+    }
+    .page-hero.compact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
     @media (max-width: 900px) {
       .admin-container {
         grid-template-columns: 1fr;
@@ -106,13 +149,102 @@
         flex-direction: row;
         overflow-x: auto;
         white-space: nowrap;
-        padding: 10px;
+        padding: 12px 6px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--line) transparent;
         -webkit-overflow-scrolling: touch;
+      }
+      .admin-sidebar::-webkit-scrollbar {
+        height: 4px;
+      }
+      .admin-sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .admin-sidebar::-webkit-scrollbar-thumb {
+        background: var(--line);
+        border-radius: 99px;
       }
       .admin-sidebar button {
         flex: 0 0 auto;
         padding: 8px 14px;
         font-size: 0.85rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .page-hero.compact {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+      .page-hero.compact button {
+        width: 100%;
+      }
+      .admin-table, 
+      .admin-table thead, 
+      .admin-table tbody, 
+      .admin-table tr, 
+      .admin-table td {
+        display: block;
+        width: 100%;
+      }
+      .admin-table thead {
+        display: none;
+      }
+      .admin-table tr {
+        margin-bottom: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.01);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+      .admin-table tr:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(190, 125, 255, 0.08);
+        text-align: right;
+        word-break: break-word;
+      }
+      .admin-table td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-top: 8px;
+      }
+      .admin-table td[data-label]::before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: var(--muted);
+        text-align: left;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-right: 16px;
+        flex-shrink: 0;
+      }
+      .admin-table td[data-label] > * {
+        max-width: 65%;
+        word-break: break-word;
+        text-align: right;
+      }
+      .admin-table td[data-label="Actions"] > div,
+      .admin-table td[data-label="Action"] > button {
+        max-width: 100% !important;
+      }
+      .cell-val {
+        align-items: flex-end;
+        text-align: right;
+      }
+      .admin-table .btn {
+        width: auto !important;
+        white-space: nowrap;
+      }
+      .admin-content-card {
+        padding: 16px;
       }
     }
   </style>
@@ -152,7 +284,7 @@
     <div class="scrim" data-scrim></div>
 
     <main class="page-main">
-      <section class="page-hero compact" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <section class="page-hero compact">
         <div>
           <p class="eyebrow">Control Center</p>
           <h1>Admin Dashboard</h1>
@@ -430,18 +562,29 @@
       if (pending.length === 0) {
         requestsTbody.innerHTML = `<tr><td colspan="5" style="text-align:center;" class="muted">No pending student requests.</td></tr>`;
       } else {
-        requestsTbody.innerHTML = pending.map(req => `
-          <tr>
-            <td><span class="status-badge ${req.requestType === 'registration' ? 'pending' : 'reset'}">${req.requestType}</span></td>
-            <td><strong>${req.name}</strong></td>
-            <td>${req.roll}</td>
-            <td>${req.email}</td>
-            <td style="text-align: right; display: flex; gap: 8px; justify-content: flex-end;">
-              <button onclick="approveRequest('${req.id}')" class="btn primary" style="min-height:34px; padding:0 12px; font-size:0.8rem;">Approve</button>
-              <button onclick="rejectRequest('${req.id}')" class="btn ghost" style="min-height:34px; padding:0 12px; font-size:0.8rem; border-color:var(--crimson); color:#ff4d6d;">Reject</button>
-            </td>
-          </tr>
-        `).join("");
+        requestsTbody.innerHTML = pending.map(req => {
+          const details = req.requestType === 'reset'
+            ? `<div style="font-size:0.82rem; color:var(--muted); margin-top:4px; font-weight:normal; line-height:1.4;">Proposed Password: <code style="color:var(--green-bright); background:rgba(255,255,255,0.06); padding:2px 4px; border-radius:4px;">${req.password}</code><br>💬 Reason: <span style="color:var(--text); font-style:italic; word-break: break-word;">"${req.reason || 'None provided'}"</span></div>`
+            : '';
+          return `
+            <tr>
+              <td data-label="Type"><span class="status-badge ${req.requestType === 'registration' ? 'pending' : 'reset'}">${req.requestType}</span></td>
+              <td data-label="Name">
+                <div class="cell-val">
+                  <strong>${req.name}</strong>${details}
+                </div>
+              </td>
+              <td data-label="Roll">${req.roll}</td>
+              <td data-label="Email">${req.email}</td>
+              <td data-label="Actions" style="text-align: right;">
+                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                  <button onclick="approveRequest('${req.id}')" class="btn primary" style="min-height:34px; padding:0 12px; font-size:0.8rem;">Approve</button>
+                  <button onclick="rejectRequest('${req.id}')" class="btn ghost" style="min-height:34px; padding:0 12px; font-size:0.8rem; border-color:var(--crimson); color:#ff4d6d;">Reject</button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("");
       }
 
       // Render Approved Students Directory
@@ -452,11 +595,11 @@
       } else {
         usersTbody.innerHTML = studentUsers.map(student => `
           <tr>
-            <td><strong>${student.name}</strong></td>
-            <td>${student.roll}</td>
-            <td>${student.email}</td>
-            <td><span class="chip">${student.role}</span></td>
-            <td style="text-align: right;">
+            <td data-label="Name"><strong>${student.name}</strong></td>
+            <td data-label="Roll">${student.roll}</td>
+            <td data-label="Email">${student.email}</td>
+            <td data-label="Role"><span class="chip">${student.role}</span></td>
+            <td data-label="Action" style="text-align: right;">
               <button onclick="revokeUser('${student.email}')" class="btn ghost" style="min-height:34px; padding:0 12px; font-size:0.8rem; border-color:var(--crimson); color:#ff4d6d;">Revoke</button>
             </td>
           </tr>
@@ -474,12 +617,12 @@
       } else {
         tbody.innerHTML = list.map((res, index) => `
           <tr>
-            <td><span class="chip" style="font-size: 0.7rem; padding: 3px 6px;">${res.type}</span></td>
-            <td><strong>${res.title}</strong></td>
-            <td>${res.course}</td>
-            <td>Sem ${res.semester}</td>
-            <td>${res.format}</td>
-            <td style="text-align: right;">
+            <td data-label="Type"><span class="chip" style="font-size: 0.7rem; padding: 3px 6px;">${res.type}</span></td>
+            <td data-label="Title"><strong>${res.title}</strong></td>
+            <td data-label="Course">${res.course}</td>
+            <td data-label="Semester">Sem ${res.semester}</td>
+            <td data-label="Format">${res.format}</td>
+            <td data-label="Action" style="text-align: right;">
               <button onclick="deleteResource(${index})" class="btn ghost" style="min-height:30px; padding:0 10px; font-size:0.75rem; border-color:var(--crimson); color:#ff4d6d;">Delete</button>
             </td>
           </tr>
