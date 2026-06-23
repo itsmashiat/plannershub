@@ -41,7 +41,7 @@ const state = { data: FALLBACK_DATA, loadedSemesters: 0 };
 const SEED_USERS = [
   { name: "Admin Mashiat", roll: "000", email: "admin@plannershub.com", password: "admin123", role: "admin", status: "approved" },
   { name: "Tonmoy Hasan", roll: "210901", email: "tonmoy@gmail.com", password: "password123", role: "user", status: "pending" },
-  { name: "Mashiat Masud", roll: "210915", email: "fariha@gmail.com", password: "password123", role: "user", status: "pending" }
+  { name: "Fariha Anjum", roll: "210915", email: "fariha@gmail.com", password: "password123", role: "user", status: "pending" }
 ];
 
 function initDatabase(jsonData) {
@@ -278,6 +278,12 @@ function pageForType(type) {
 function initResources() {
   const list = document.querySelector("[data-resource-list]");
   if (!list) return;
+
+  const protectedPages = ["books", "notes", "questions", "YT Resources"];
+  const bodyPage = document.body.dataset.page;
+  if (protectedPages.includes(bodyPage) && !getCurrentUser()) {
+    return; // Block rendering resources for guest users
+  }
   const type = list.dataset.type;
   const input = document.querySelector("[data-filter-input]");
   const semesterFilter = document.querySelector("[data-semester-filter]");

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auth Portal | PlannersHub</title>
   <link rel="stylesheet" href="../style.css">
 </head>
+
 <body data-page="auth">
   <div class="site-shell inner-page">
     <header class="navbar" data-nav>
@@ -41,24 +43,37 @@
     <div class="scrim" data-scrim></div>
 
     <main class="page-main" style="display: grid; place-items: center; padding: 40px 0;">
-      <div class="auth-card" style="width: 100%; max-width: 480px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); backdrop-filter: blur(14px); box-shadow: var(--shadow);">
-        <div class="auth-tabs" style="display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px;">
-          <button type="button" class="tab-btn active" onclick="switchTab('login')" id="tab-login" style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 1rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Login</button>
-          <button type="button" class="tab-btn" onclick="switchTab('register')" id="tab-register" style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 1rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Register</button>
-          <button type="button" class="tab-btn" onclick="switchTab('forgot')" id="tab-forgot" style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 0.85rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Forgot Pass</button>
+      <div class="auth-card"
+        style="width: 100%; max-width: 480px; padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); backdrop-filter: blur(14px); box-shadow: var(--shadow);">
+        <div class="auth-tabs"
+          style="display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 12px;">
+          <button type="button" class="tab-btn active" onclick="switchTab('login')" id="tab-login"
+            style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 1rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Login</button>
+          <button type="button" class="tab-btn" onclick="switchTab('register')" id="tab-register"
+            style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 1rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Register</button>
+          <button type="button" class="tab-btn" onclick="switchTab('forgot')" id="tab-forgot"
+            style="flex: 1; background: none; border: none; color: var(--muted); font-weight: 800; font-size: 0.85rem; cursor: pointer; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 180ms ease;">Forgot
+            Pass</button>
         </div>
 
-        <div id="auth-alert" style="display: none; padding: 12px; border-radius: var(--radius); margin-bottom: 20px; font-weight: 700; font-size: 0.9rem; text-align: center;"></div>
+        <div id="auth-alert"
+          style="display: none; padding: 12px; border-radius: var(--radius); margin-bottom: 20px; font-weight: 700; font-size: 0.9rem; text-align: center;">
+        </div>
 
         <!-- LOGIN FORM -->
         <form id="form-login" onsubmit="handleLogin(event)">
           <div style="margin-bottom: 18px;">
-            <label for="login-email" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Student Email</label>
-            <input type="email" id="login-email" required placeholder="name@student.pust.ac.bd" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease;">
+            <label for="login-email"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Student
+              Email</label>
+            <input type="email" id="login-email" required placeholder="name@gmail.com"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease;">
           </div>
           <div style="margin-bottom: 24px;">
-            <label for="login-password" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Password</label>
-            <input type="password" id="login-password" required placeholder="••••••••" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease;">
+            <label for="login-password"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Password</label>
+            <input type="password" id="login-password" required placeholder="••••••••"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none; transition: border-color 150ms ease;">
           </div>
           <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Login Account</button>
         </form>
@@ -66,40 +81,65 @@
         <!-- REGISTER FORM -->
         <form id="form-register" onsubmit="handleRegister(event)" style="display: none;">
           <div style="margin-bottom: 16px;">
-            <label for="reg-name" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Full Name</label>
-            <input type="text" id="reg-name" required placeholder="e.g. Mashiat Rahman" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="reg-name"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Full
+              Name</label>
+            <input type="text" id="reg-name" required placeholder="e.g. Mashiat Masud"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
           <div style="margin-bottom: 16px;">
-            <label for="reg-roll" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Class Roll Number</label>
-            <input type="text" id="reg-roll" required placeholder="e.g. 210901" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="reg-roll"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Class
+              Roll Number</label>
+            <input type="text" id="reg-roll" required placeholder="e.g. 241705"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
           <div style="margin-bottom: 16px;">
-            <label for="reg-email" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Email Address</label>
-            <input type="email" id="reg-email" required placeholder="e.g. mashiat@gmail.com" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="reg-email"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Email
+              Address</label>
+            <input type="email" id="reg-email" required placeholder="e.g. itsmashiat@gmail.com"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
           <div style="margin-bottom: 24px;">
-            <label for="reg-pass" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Choose Password</label>
-            <input type="password" id="reg-pass" required placeholder="••••••••" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="reg-pass"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Choose
+              Password</label>
+            <input type="password" id="reg-pass" required placeholder="••••••••"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
-          <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Submit Registration Request</button>
+          <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Submit Registration
+            Request</button>
         </form>
 
         <!-- FORGOT PASSWORD FORM -->
         <form id="form-forgot" onsubmit="handleForgot(event)" style="display: none;">
-          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px;">Enter your registered roll and email to submit a password reset request. An administrator must approve this request before the new password takes effect.</p>
+          <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px;">Enter your
+            registered roll and email to submit a password reset request. An administrator must approve this request
+            before the new password takes effect.</p>
           <div style="margin-bottom: 16px;">
-            <label for="forgot-roll" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Class Roll Number</label>
-            <input type="text" id="forgot-roll" required placeholder="e.g. 210901" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="forgot-roll"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Class
+              Roll Number</label>
+            <input type="text" id="forgot-roll" required placeholder="e.g. 210901"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
           <div style="margin-bottom: 16px;">
-            <label for="forgot-email" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Email Address</label>
-            <input type="email" id="forgot-email" required placeholder="e.g. mashiat@gmail.com" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="forgot-email"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Email
+              Address</label>
+            <input type="email" id="forgot-email" required placeholder="e.g. itsmashiat@gmail.com"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
           <div style="margin-bottom: 24px;">
-            <label for="forgot-pass" style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Proposed New Password</label>
-            <input type="password" id="forgot-pass" required placeholder="••••••••" style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
+            <label for="forgot-pass"
+              style="display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;">Proposed
+              New Password</label>
+            <input type="password" id="forgot-pass" required placeholder="••••••••"
+              style="width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--text); background: rgba(255,255,255,0.05); outline: none;">
           </div>
-          <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Request Password Reset</button>
+          <button type="submit" class="btn primary" style="width: 100%; min-height: 48px;">Request Password
+            Reset</button>
         </form>
       </div>
     </main>
@@ -116,7 +156,7 @@
     function switchTab(tab) {
       document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
       document.querySelectorAll("form").forEach(form => form.style.display = "none");
-      
+
       const alert = document.getElementById("auth-alert");
       alert.style.display = "none";
 
@@ -192,7 +232,7 @@
       // Check for redirect param
       const params = new URLSearchParams(location.search);
       let redirect = params.get("redirect");
-      
+
       setTimeout(() => {
         if (redirect) {
           // If the redirect path contains "pages/", and we are already in pages folder, make it relative
@@ -249,7 +289,7 @@
       localStorage.setItem("plannershub_pending_users", JSON.stringify(pending));
 
       showAlert("Registration request sent! Please notify the admin to approve your account.", "success");
-      
+
       // Clear fields
       document.getElementById("form-register").reset();
     }
@@ -297,4 +337,5 @@
     }
   </script>
 </body>
+
 </html>
