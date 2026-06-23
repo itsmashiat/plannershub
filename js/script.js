@@ -37,9 +37,31 @@ const FALLBACK_DATA = {
 
 const state = { data: FALLBACK_DATA, loadedSemesters: 0 };
 
+// Database initialization
+const SEED_USERS = [
+  { name: "Admin Mashiat", roll: "000", email: "admin@plannershub.com", password: "admin123", role: "admin", status: "approved" },
+  { name: "Tonmoy Hasan", roll: "210901", email: "tonmoy@gmail.com", password: "password123", role: "user", status: "pending" },
+  { name: "Mashiat Masud", roll: "210915", email: "fariha@gmail.com", password: "password123", role: "user", status: "pending" }
+];
+
+function initDatabase(jsonData) {
+  if (!localStorage.getItem("plannershub_users")) {
+    localStorage.setItem("plannershub_users", JSON.stringify(SEED_USERS));
+  }
+  if (!localStorage.getItem("plannershub_resources")) {
+    if (jsonData && jsonData.resources) {
+      localStorage.setItem("plannershub_resources", JSON.stringify(jsonData.resources));
+    } else {
+      localStorage.setItem("plannershub_resources", JSON.stringify(FALLBACK_DATA.resources));
+    }
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   setupMenu();
   state.data = await loadData();
+  updateNavigation();
+  checkAccessControl();
   initHome();
   initResources();
   initCgpa();
@@ -49,12 +71,119 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadData() {
   const isInnerPage = location.pathname.includes("/pages/");
   const path = isInnerPage ? "../data/resources.json" : "data/resources.json";
+  let jsonData = null;
   try {
     const response = await fetch(path);
-    if (!response.ok) throw new Error("Data file unavailable");
-    return await response.json();
+    if (response.ok) {
+      jsonData = await response.json();
+    }
   } catch (error) {
-    return FALLBACK_DATA;
+    console.warn("Could not fetch resources.json, using fallback", error);
+  }
+
+  if (!jsonData) {
+    jsonData = FALLBACK_DATA;
+  }
+
+  initDatabase(jsonData);
+
+  const localResources = JSON.parse(localStorage.getItem("plannershub_resources")) || jsonData.resources;
+
+  return {
+    program: jsonData.program,
+    gradingScale: jsonData.gradingScale,
+    semesters: jsonData.semesters,
+    resources: localResources
+  };
+}
+
+// Auth helper functions
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem("plannershub_current_user")) || null;
+}
+
+function logout() {
+  localStorage.removeItem("plannershub_current_user");
+  const isInnerPage = location.pathname.includes("/pages/");
+  location.href = isInnerPage ? "../index.html" : "index.html";
+}
+
+window.logoutUser = logout;
+
+function updateNavigation() {
+  const user = getCurrentUser();
+  const navLinks = document.querySelector(".nav-links");
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
+  const isInnerPage = location.pathname.includes("/pages/");
+  const authPath = isInnerPage ? "auth.html" : "pages/auth.html";
+  const adminPath = isInnerPage ? "admin.html" : "pages/admin.html";
+  const homePath = isInnerPage ? "../index.html" : "index.html";
+
+  if (!navLinks || !mobileMenu) return;
+
+  // Clear existing buttons/elements added previously
+  navLinks.querySelectorAll(".auth-nav-btn, .user-profile-nav").forEach(el => el.remove());
+  mobileMenu.querySelectorAll(".auth-nav-link-mobile, .mobile-profile-section").forEach(el => el.remove());
+
+  if (user) {
+    const adminLinkHtml = user.role === "admin" ? `<a href="${adminPath}" class="auth-nav-btn admin-link">Admin Panel</a>` : "";
+    navLinks.insertAdjacentHTML("beforeend", `
+      ${adminLinkHtml}
+      <div class="user-profile-nav" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span class="user-greeting" style="color: var(--green-bright); font-weight: 700;">Hi, ${user.name.split(" ")[0]}</span>
+        <button onclick="logoutUser()" class="btn ghost" style="padding: 4px 12px; min-height: 32px; font-size: 0.8rem;">Logout</button>
+      </div>
+    `);
+
+    const mobileAdminLinkHtml = user.role === "admin" ? `<a href="${adminPath}" class="auth-nav-link-mobile">Admin Panel</a>` : "";
+    mobileMenu.insertAdjacentHTML("beforeend", `
+      ${mobileAdminLinkHtml}
+      <div class="auth-nav-link-mobile mobile-profile-section" style="padding: 15px 8px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: var(--green-bright); font-weight: 700;">Hi, ${user.name}</span>
+        <button onclick="logoutUser()" class="btn ghost" style="padding: 5px 10px; min-height: auto;">Logout</button>
+      </div>
+    `);
+  } else {
+    navLinks.insertAdjacentHTML("beforeend", `
+      <a href="${authPath}" class="btn primary auth-nav-btn" style="padding: 8px 14px; min-height: auto; font-size: 0.85rem;">Login / Register</a>
+    `);
+
+    mobileMenu.insertAdjacentHTML("beforeend", `
+      <a href="${authPath}" class="auth-nav-link-mobile" style="color: var(--green-bright); font-weight: 900; padding: 15px 8px; display: block; border-bottom: 1px solid var(--line);">Login / Register</a>
+    `);
+  }
+}
+
+function checkAccessControl() {
+  const protectedPages = ["books", "notes", "questions", "YT Resources"];
+  const bodyPage = document.body.dataset.page;
+
+  if (protectedPages.includes(bodyPage)) {
+    const user = getCurrentUser();
+    if (!user) {
+      const toolbar = document.querySelector(".resource-toolbar");
+      const list = document.querySelector("[data-resource-list]");
+      if (toolbar) toolbar.style.display = "none";
+      if (list) {
+        list.style.display = "block";
+        list.style.gridTemplateColumns = "1fr";
+        const isInnerPage = location.pathname.includes("/pages/");
+        const authPath = isInnerPage ? "auth.html" : "pages/auth.html";
+        const homePath = isInnerPage ? "../index.html" : "index.html";
+        list.innerHTML = `
+          <div class="lock-panel" style="text-align: center; padding: 60px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); backdrop-filter: blur(10px); max-width: 600px; margin: 40px auto; box-shadow: var(--shadow);">
+            <div class="lock-icon" style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--green-bright);">Restricted Academic Portal</h2>
+            <p style="color: var(--text); line-height: 1.6; margin-bottom: 16px;">Access to curriculum libraries, lecture notes, question banks, and recommended videos is locked for unregistered users.</p>
+            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 30px;">Please login with your approved credentials or submit a registration request to the administrator.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <a href="${authPath}" class="btn primary">Login / Register</a>
+              <a href="${homePath}" class="btn ghost">Back to Home</a>
+            </div>
+          </div>
+        `;
+      }
+    }
   }
 }
 
@@ -125,14 +254,22 @@ function initHome() {
 }
 
 function resultTemplate(item) {
-  const href = item.type === "course" ? "pages/cgpa.html" : pageForType(item.type);
-  const label = item.type === "course" ? `${item.code} - ${item.credits} credits` : `${item.course} - ${item.format}`;
-  return `<a class="result-item" href="${href}"><strong>${item.title}</strong><span>${label}</span></a>`;
+  const user = getCurrentUser();
+  const isCourse = item.type === "course";
+  let href = isCourse ? "pages/cgpa.html" : pageForType(item.type);
+
+  if (!isCourse && !user) {
+    href = "pages/auth.html?redirect=" + encodeURIComponent(pageForType(item.type));
+  }
+
+  const label = isCourse ? `${item.code} - ${item.credits} credits` : `${item.course} - ${item.format}`;
+  const lockIcon = (!isCourse && !user) ? " 🔒" : "";
+  return `<a class="result-item" href="${href}"><strong>${item.title}${lockIcon}</strong><span>${label}</span></a>`;
 }
 
 function pageForType(type) {
-  const map = { book: "pages/books.html", note: "pages/notes.html", question: "pages/questions.html", video: "pages/tools.html" };
-  return map[type] || "pages/tools.html";
+  const map = { book: "pages/books.html", note: "pages/notes.html", question: "pages/questions.html", video: "pages/ytresources.html" };
+  return map[type] || "pages/ytresources.html";
 }
 
 //FIXME:dsfgdfgsdfgsddgsdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
@@ -175,7 +312,7 @@ function initResources() {
 
 function resourceCard(item) {
   if (item.type === "video" || item.format === "YouTube") {
-    const embedHtml = item.linkEmbd 
+    const embedHtml = item.linkEmbd
       ? `<iframe src="${item.linkEmbd}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; margin-bottom: 12px;"></iframe>`
       : "";
     return `
@@ -192,10 +329,10 @@ function resourceCard(item) {
     `;
   }
 
-  const transformedDownloadLink = item.link.includes("file/d/") 
+  const transformedDownloadLink = item.link.includes("file/d/")
     ? `https://drive.google.com/uc?export=download&id=${item.link.split("file/d/")[1].split("/view")[0]}`
     : item.link;
-    
+
   return `
     <article class="resource-card">
       <h3>${item.title}</h3>
