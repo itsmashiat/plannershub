@@ -39,7 +39,7 @@ export const Cgpa = () => {
 
   const loadSemester = (semId) => {
     if (!semId || loadedSemesters.includes(semId)) return;
-    
+
     // Add to loaded list
     setLoadedSemesters([...loadedSemesters, semId].sort((a, b) => a - b));
 
@@ -102,7 +102,7 @@ export const Cgpa = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '30px', alignItems: 'start' }} className="calculator-layout">
         {/* Course input column */}
         <div className="glass-panel" style={{ padding: '24px' }}>
-          
+
           {/* Controls */}
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid var(--line)' }}>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -115,7 +115,7 @@ export const Cgpa = () => {
                 defaultValue=""
                 style={{ minHeight: '40px', width: 'auto', minWidth: '220px' }}
               >
-                <option value="" disabled>+ Load Semester Courses</option>
+                <option value="" disabled>Load Semester Courses</option>
                 {remainingSemesters.map((sem) => (
                   <option key={sem.id} value={sem.id}>
                     {sem.label}
@@ -123,7 +123,7 @@ export const Cgpa = () => {
                 ))}
               </select>
             </div>
-            
+
             <button onClick={resetAll} className="btn secondary" style={{ padding: '8px 16px', minHeight: '40px' }}>
               <RotateCcw size={14} /> Reset Grid
             </button>
@@ -137,9 +137,9 @@ export const Cgpa = () => {
               const semCredits = semCourses.reduce((sum, c) => sum + c.credits, 0);
 
               return (
-                <div 
-                  key={semId} 
-                  className="glass-panel" 
+                <div
+                  key={semId}
+                  className="glass-panel"
                   style={{
                     padding: '20px',
                     marginBottom: '20px',
@@ -172,7 +172,7 @@ export const Cgpa = () => {
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {semCourses.map((course) => (
-                      <div 
+                      <div
                         key={course.code}
                         style={{
                           display: 'flex',
@@ -187,7 +187,7 @@ export const Cgpa = () => {
                           <div style={{ fontSize: '0.9rem', fontWeight: '700', color: '#fff' }}>{course.title}</div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '2px' }}>{course.code} &bull; {course.credits} Credits</div>
                         </div>
-                        
+
                         <select
                           className="form-select"
                           value={grades[course.code] !== undefined ? grades[course.code] : 4.0}
@@ -219,29 +219,29 @@ export const Cgpa = () => {
         {/* CGPA display side panel */}
         <aside className="glass-panel" style={{ padding: '24px', textAlign: 'center', position: 'sticky', top: '100px' }}>
           <p className="eyebrow" style={{ marginBottom: '12px' }}>Live Standing</p>
-          <strong 
-            style={{ 
-              display: 'block', 
-              fontSize: '4rem', 
-              fontWeight: '900', 
-              color: 'var(--accent)', 
-              lineHeight: '1', 
+          <strong
+            style={{
+              display: 'block',
+              fontSize: '4rem',
+              fontWeight: '900',
+              color: 'var(--accent)',
+              lineHeight: '1',
               marginBottom: '12px',
               textShadow: '0 0 20px rgba(0,229,255,0.3)'
             }}
           >
             {cgpaResult.cgpa.toFixed(2)}
           </strong>
-          <span 
-            style={{ 
-              display: 'block', 
-              fontSize: '0.9rem', 
-              lineHeight: '1.5', 
-              color: '#fff', 
-              fontWeight: '600', 
-              marginBottom: '20px', 
-              padding: '12px', 
-              borderRadius: '8px', 
+          <span
+            style={{
+              display: 'block',
+              fontSize: '0.9rem',
+              lineHeight: '1.5',
+              color: '#fff',
+              fontWeight: '600',
+              marginBottom: '20px',
+              padding: '12px',
+              borderRadius: '8px',
               background: 'rgba(255,255,255,0.02)',
               border: '1px solid var(--line)'
             }}
