@@ -3,131 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlannersHub | PUST URP</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>PlannersHub | PUST URP Portal</title>
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="Centralized academic resources and productivity tools for Urban and Regional Planning students at Pabna University of Science and Technology (PUST).">
 </head>
-<body data-page="home">
-  <div class="site-shell">
-    <header class="navbar" data-nav>
-      <a class="brand" href="./index.html" aria-label="PlannersHub home">
-        <span class="brand-mark">PH</span>
-        <span>
-          <strong>PlannersHub</strong>
-          <small>PUST URP</small>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="pages/books.html">Books</a>
-        <a href="pages/notes.html">Notes</a>
-        <a href="pages/questions.html">Questions</a>
-        <a href="pages/ytresources.html">YouTube Resources</a>
-        <a href="pages/cgpa.html">CGPA</a>
-        <a href="pages/tools.html">Tools</a>
-      </nav>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
-
-    <aside class="mobile-menu" data-mobile-menu aria-hidden="true">
-      <div class="mobile-menu-head">
-        <span class="brand-mark">PH</span>
-        <button class="menu-close" type="button" aria-label="Close menu">Close</button>
-      </div>
-      <a href="pages/books.html">Books Library</a>
-      <a href="pages/notes.html">Class Notes</a>
-      <a href="pages/questions.html">Previous Questions</a>
-      <a href="pages/ytresources.html">YouTube Resources</a>
-      <a href="pages/cgpa.html">CGPA Calculator</a>
-      <a href="pages/tools.html">Student Tools</a>
-    </aside>
-    <div class="scrim" data-scrim></div>
-
-    <main>
-      <section class="hero">
-          <div class="hero-part01">
-            <p class="eyebrow">Navigating Your Planning Degree</p>
-          <h1>Your compass for navigating courses, resources, and academic success.</h1>
-          <p class="hero-text">Find books, notes, previous questions, GIS help, curated YouTube tracks, and semester-aware CGPA calculations in a clean student portal built for planners.</p>
-          </div>
-          <div class="hero-part02">
-            <form class="search-box" data-search-form>
-              <label class="sr-only" for="heroSearch">Search resources</label>
-              <input id="heroSearch" type="search" placeholder="Ki bhaya ki lagbo ......" autocomplete="on">
-              <button type="submit">Search</button>
-            </form>
-
-            <div class="search-results" data-search-results aria-live="polite"></div>
-            <div class="hero-actions">
-              <!-- <a class="btn primary" href="pages/cgpa.html">Calculate CGPA</a> -->
-              <a class="btn ghost" href="pages/books.html">Browse Library</a>
-            </div>
-          </div>
-      </section> 
-      <!-- end of hero section -->
-
-      <section class="stats-band" aria-label="Program snapshot">
-        <div><strong>8</strong><span>Semesters</span></div>
-        <div><strong>161.5</strong><span>Total Credits</span></div>
-        <div><strong>PUST</strong><span>Official Curriculum</span></div>
-        <div><strong>URP</strong><span>Books + Notes + Tools</span></div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <p class="eyebrow">Student friendly features</p>
-          <h2>Everything connected to your courses.</h2>
-        </div>
-        <div class="feature-grid">
-          <a class="feature-card" href="pages/books.html">
-            <span class="feature-icon">BK</span>
-            <h3>Stored Books</h3>
-            <p>Organized textbooks and reference PDFs mapped to course codes.</p>
-          </a>
-          <a class="feature-card" href="pages/notes.html">
-            <span class="feature-icon">NT</span>
-            <h3>Class Notes</h3>
-            <p>Lecture notes, studio checklists, and quick revision material.</p>
-          </a>
-          <a class="feature-card" href="pages/questions.html">
-            <span class="feature-icon">QY</span>
-            <h3>Previous Questions</h3>
-            <p>Semester archives and exam practice grouped by level and course.</p>
-          </a>
-          <a class="feature-card" href="pages/ytresources.html">
-            <span class="feature-icon">YT</span>
-            <h3>YouTube Resources</h3>
-            <p>Curated video tutorials and lectures for each course.</p>
-          </a>
-          <a class="feature-card" href="pages/cgpa.html">
-            <span class="feature-icon">CG</span>
-            <h3>Smart CGPA</h3>
-            <p>Preloads PUST URP courses with exact credits and ordinance grades.</p>
-          </a>
-          <a class="feature-card" href="pages/tools.html">
-            <span class="feature-icon">TL</span>
-            <h3>Planner Tools</h3>
-            <p>Attendance helper, deadline planner, reading tracker, and field kit.</p>
-          </a>
-        </div>
-      </section>
-
-      <section class="section split-section">
-        <div>
-          <p class="eyebrow">Curriculum intelligence</p>
-          <h2>Built around the BURP path.</h2>
-          <p class="muted">The landing page reads from the same curriculum database as the CGPA calculator and resource pages, so every book, note, and video can be filtered by course code.</p>
-          <a class="btn secondary" href="pages/tools.html">See student tools</a>
-        </div>
-        <div class="curriculum-preview" data-curriculum-preview></div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span>PlannersHub for PUST Urban and Regional Planning students.</span>
-      <span>Designed er ********.</span>
-    </footer>
-  </div>
-  <script src="js/script.js"></script>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
